@@ -1,6 +1,43 @@
+<?php 
+
+    # Include the Config file (Database connection)
+    include_once "./config.php";
+
+    # Get form data
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+    $cpass = mysqli_real_escape_string($conn, $_POST['cpass']);
+
+    # Validation of form data
+    if(empty($username) || empty($email) || empty($userpass))
+    {
+        die("Please fill in all the fields!");
+    }
+
+    # Hash password for security
+    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+
+    # Insert user information into database
+    $sql = "INSERT INTO tbl_user (username, email, password) VALUES ('$name', '$email', '$hashed_password')";
+
+    if (mysqli_query($conn, $sql)) 
+    {
+        echo "Registration successful.";
+    } 
+    else 
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    // Close database connection
+    mysqli_close($conn);
+
+
+?>
+
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,22 +63,22 @@
 
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name">
         </div>
 
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
         </div>
 
         <div class="form-group">
             <label for="password_1">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <input type="password" name="pass" class="form-control" id="password" placeholder="Enter your password">
         </div>
 
         <div class="form-group">
             <label for="password_2">Confirm Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <input type="password" name="cpass" class="form-control" id="password" placeholder="Enter your password">
         </div>
 
         <br/>

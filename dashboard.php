@@ -18,14 +18,16 @@
 
 <div class="container-fluid">
   <div class="row">
+
     <div class="col-md-3">
       <div class="list-group">
-        <a href="#" class="list-group-item active">Dashboard</a>
-        <a href="#" class="list-group-item">Profile</a>
-        <a href="#" class="list-group-item">Settings</a>
-        <a href="#" class="list-group-item">Messages</a>
+        <a href="./dashboard.php" class="list-group-item active">Dashboard</a>
+        <a href="#!" class="list-group-item">Profile</a>
+        <a href="#!" class="list-group-item">Messages</a>
+        <a href="#!" class="list-group-item">Logout</a>
       </div>
     </div>
+
     <div class="col-md-9">
       <h1>Welcome to your Dashboard</h1>
       <p>Here you can view your account information and manage your settings.</p>
@@ -35,7 +37,7 @@
             <div class="card-body">
               <h3 class="card-title">Account Information</h3>
               <p class="card-text">View and edit your account information.</p>
-              <a href="#" class="btn btn-primary">Go to Account Information</a>
+              <a href="#" class="btn btn-primary">View</a>
             </div>
           </div>
         </div>
@@ -44,7 +46,7 @@
             <div class="card-body">
               <h3 class="card-title">Settings</h3>
               <p class="card-text">Update your preferences and settings.</p>
-              <a href="#" class="btn btn-primary">Go to Settings</a>
+              <a href="#" class="btn btn-primary">View</a>
             </div>
           </div>
         </div>
