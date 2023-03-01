@@ -1,3 +1,54 @@
+<?php 
+
+    # Include the Config file (Database connection)
+    include_once "./logic/config.php";
+$error;
+
+    # Get form data
+    if(isset($_POST['submit'])){
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass = mysqli_real_escape_string($conn, $_POST['pass']);
+        $cpass = mysqli_real_escape_string($conn, $_POST['cpass']);
+        
+
+        # Validation of form data
+        if(!preg_match("/^[a-zA-Z ]+$/",$name)) 
+        {
+            $name_error = "Name must contain only alphabets and space";
+        }
+   
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)) 
+        {
+            $email_error = "Please Enter Valid Email ID";
+        }
+            
+        if(strlen($pass) < 6) 
+        {
+            $pass_error = "Password must be minimum of 6 characters";
+        } 
+
+        if($pass != $cpass) 
+        {
+            $cpass_error = "Password and Confirm Password doesn't match"; 
+        }
+
+        if(!$error){
+            if (mysqli_query($conn, "INSERT INTO tbl_user(name, email, password) VALUES('" . $name . "', '" . $email . "', '" . md5($password) . "')")) 
+            {
+                header("location: ./register.php");
+                exit();
+            } else {
+                echo "Error: " . $sql . "" . mysqli_error($conn);
+            }
+        }
+    mysqli_close($conn);
+
+    }
+
+
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -18,7 +69,7 @@
 
 
 
-    <form action="./logic/register.php" method="post">
+    <form action="register.php" method="post">
 
         <header>
             <p class="p">Account Sign Up!</p>
@@ -47,7 +98,7 @@
         <br/>
 
         <div class="form-footer">
-            <button type="submit" class="btn btn-primary">Register user</button>
+            <button type="submit" name="submit" class="btn btn-primary">Register user</button>
         </div>
     </form>
 
