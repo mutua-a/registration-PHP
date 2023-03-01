@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.p{
+    font-family: 'Tangerine', serif;
+    font-size: 70px;
+}
+
+form{
+    
+    /* Center the form */
+    margin: 0 auto;
+    width: 40%;
+
+    /* form outline */
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.form-group{
+    margin-top: 1em;
+    
+}
+
+label {
+    /* Uniform size & alignment */
+    width: 100%;
+    text-align: left;
+  }
+
+.form-control{
+  font: 1em sans-serif; /* To make sure that all text fields have the same font settings By default */
+  width: 300px; /* Uniform text field size */
+  border: 1px solid #999; /* Match form field borders */
+}
+
+
+    /* Align buttons with the text fields */
+     /* same size as the label elements */
+     /* This extra margin represent roughly the same space as the space
+       between the labels and their text fields */
+ 
+button{
+    padding-left: 90px;
+    margin-left: 0.5em;
+  }
